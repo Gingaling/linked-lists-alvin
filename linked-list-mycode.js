@@ -14,10 +14,58 @@ a.next = b;
 b.next = c;
 c.next = d;
 
-const printLinkedList(head) => {
+// Traverse through linked list
+
+function printLinkedList(head) {
     let current = head;
-    while (current != null) {
+    while (current !== null) {
         console.log(current.val);
         current = current.next;
     }
-};
+    return;
+}
+
+printLinkedList(a);
+
+// Same as above but coded recursively
+
+function printLinkedList(head) {
+    let current = head;
+    if (current === null) {
+        return;
+    }
+    console.log(current.val);
+    printLinkedList(current.next);
+}
+
+printLinkedList(a);
+
+// Add values of linked list to empty array in same order as linked list 
+
+function addLinkedListToArray(head) {
+    const values = [];
+    let current = head;
+    while (current != null) {
+        values.push(current.val);
+        current = current.next;
+    }
+    return values;
+}
+
+console.log(addLinkedListToArray(a));
+
+// Same as immediately above except coded recursively
+
+const values = [];
+
+function addLinkedListToArray(head) {
+	let current = head;
+    if (current === null) {
+        return;
+    }
+    values.push(current.val);
+    addLinkedListToArray(current.next);
+    return values;
+}
+
+console.log(addLinkedListToArray(a));
