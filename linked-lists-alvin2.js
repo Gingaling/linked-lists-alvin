@@ -142,14 +142,14 @@ a.next = b;
 b.next = c;
 c.next = d;
 
-const e = new Node(2);
-const f = new Node(8);
-const g = new Node(3);
-const h = new Node(7);
-const i = new Node(2);
-const j = new Node(8);
-const k = new Node(3);
-const l = new Node(7);
+const e = new Node(28);
+const f = new Node(27);
+const g = new Node(26);
+const h = new Node(25);
+const i = new Node(24);
+const j = new Node(23);
+const k = new Node(22);
+const l = new Node(21);
 
 e.next = f;
 f.next = g;
@@ -180,6 +180,23 @@ function zipperList(head1, head2) {
         tail.next = current2;
     }
     else tail.next = current1;
+    const newHead = head1
     return head1.val;
-
 }
+
+// Same as above except coded recursively
+
+function zipperList(head1, head2) {
+    if (head1 === null && head2 === null) return null;
+    if (head1 === null) return head2;
+    if (head2 === null) return head1;
+
+    const next1 = head1.next;
+    const next2 = head2.next;
+    head1.next = head2;
+    head2.next = zipperList(next1, next2);
+    const newHead = head1;
+    return head1.val;
+}
+
+console.log(zipperList(j, a));
